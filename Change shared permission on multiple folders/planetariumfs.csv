@@ -1,0 +1,9 @@
+Name,AccountName,AccessRight
+Planetarium1,BUILTIN\Administrators,Full
+Planetarium1,Everyone,Read
+Planetarium2,BUILTIN\Administrators,Full
+Planetarium2,Everyone,Read
+Planetarium3,BUILTIN\Administrators,Full
+Planetarium3,Everyone,Read
+Planetarium4,BUILTIN\Administrators,Full
+Planetarium4,Everyone,Read
