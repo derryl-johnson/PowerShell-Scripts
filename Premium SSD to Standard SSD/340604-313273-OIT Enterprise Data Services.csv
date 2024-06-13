@@ -1,0 +1,17 @@
+Name,RG
+az6568wdbp1_dataDisk,ehsmssql_rg
+az6568wdbp1_osDisk,ehsmssql_rg
+az6D61lappd1_osDisk,mars_development_rg
+az6D61lappd2_dataDisk,mars_development_rg
+az6D61lappd2_osDisk,mars_development_rg
+az6d61lappp1_datadisk,mars_rg
+az6D61lappp1_osDisk,mars_rg
+az6D61lappp2_dataDisk,mars_rg
+az6D61lappp2_osDisk,mars_rg
+az6D61lappp3_dataDisk,mars_rg
+az6D61lappp3_osDisk,mars_rg
+az6D61lappt1_osDisk,mars_test_rg
+az6D61lappt2_dataDisk,mars_test_rg
+az6D61lappt2_osDisk,mars_test_rg
+az6D61ldbp1_osDisk,mars_rg
+az6D61ldbt1_osDisk,mars_test_rg

@@ -1,0 +1,1136 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20220710052847
+Username: UTA\johnsond3
+RunAs User: UTA\johnsond3
+Configuration Name: 
+Machine: OIT-131297 (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell_ise.exe
+Process ID: 19620
+PSVersion: 5.1.19041.1682
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.1682
+BuildVersion: 10.0.19041.1682
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Premium SSD to Standard SSD\log.txt
+PS C:\Windows\system32> ##### Connects PS session to subscription name 340604-313265-OIT Network Infrastructure
+Set-AzContext -subscription "5e390ec8-67e1-45e2-bbaa-0fa2542faba6"
+
+# Stop and deallocate the VM before changing the storage type
+Stop-AzVM -ResourceGroupName keywatcher_RG -Name az6B65wappp1 -Force -Verbose
+
+# Import the CSV into a variable
+$AZdisks = Import-Csv -Path 'C:\Premium SSD to Standard SSD\340604-313265-OIT Network Infrastructure.csv'
+            
+foreach ($AZdisk in $AZdisks)            
+{   
+    # Imports the data from the CSV in each row into a variable         
+    $diskname = $AZdisk.Name
+    $resourcegroup = $AZdisk.RG
+    $storageType = 'StandardSSD_LRS'
+    
+    # Gather disk info
+    $disk = Get-AzDisk -DiskName $diskname -ResourceGroupName $resourcegroup
+           
+    # Update the storage type
+    $disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
+    $disk | Update-AzDisk
+    Write-Output "The disk '$diskname' has been converted successfully." `n
+}
+
+Start-AzVM -ResourceGroupName keywatcher_RG -Name az6B65wappp1 -Verbose
+
+
+##### Connects PS session to subscription name 340604-313267-Network Operations
+Set-AzContext -subscription "c4b34148-c5fb-4664-b736-0c1911f1ef3f"
+
+# Stop and deallocate the VM before changing the storage type
+Stop-AzVM -ResourceGroupName netperf_RG -Name az4E65lappp1 -Force -Verbose
+Stop-AzVM -ResourceGroupName UTArlingtonHubIdentityResourceGroup -Name azdcwapp01 -Force -Verbose
+Stop-AzVM -ResourceGroupName UTArlingtonHubIdentityResourceGroup -Name azdcwapp02 -Force -Verbose
+Stop-AzVM -ResourceGroupName dns_RG -Name azdnswapp01 -Force -Verbose
+Stop-AzVM -ResourceGroupName dns_RG -Name azdnswapp02 -Force -Verbose
+Stop-AzVM -ResourceGroupName UTArlingtonHubIdentityResourceGroup -Name azidmlapp01 -Force -Verbose
+Stop-AzVM -ResourceGroupName UTArlingtonHubIdentityResourceGroup -Name azdcwapp02 -Force -Verbose
+Stop-AzVM -ResourceGroupName UTArlingtonHubIdentityResourceGroup -Name azidmlapp03 -Force -Verbose
+Stop-AzVM -ResourceGroupName UTArlingtonHubIdentityResourceGroup -Name azidmwapp01 -Force -Verbose
+Stop-AzVM -ResourceGroupName UTArlingtonHubIdentityResourceGroup -Name azidmwapp02 -Force -Verbose
+
+# Import the CSV into a variable
+$AZdisks = Import-Csv -Path 'C:\Premium SSD to Standard SSD\340604-313267-Network Operations.csv'
+            
+foreach ($AZdisk in $AZdisks)            
+{   
+    # Imports the data from the CSV in each row into a variable         
+    $diskname = $AZdisk.Name
+    $resourcegroup = $AZdisk.RG
+    $storageType = 'StandardSSD_LRS'
+    
+    # Gather disk info
+    $disk = Get-AzDisk -DiskName $diskname -ResourceGroupName $resourcegroup
+           
+    # Update the storage type
+    $disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
+    $disk | Update-AzDisk
+    Write-Output "The disk '$diskname' has been converted successfully." `n
+}
+
+Start-AzVm -ResourceGroupName netperf_RG -Name az4E65lappp1 -Verbose
+Start-AzVm -ResourceGroupName UTArlingtonHubIdentityResourceGroup -Name azdcwapp01 -Verbose
+Start-AzVm -ResourceGroupName UTArlingtonHubIdentityResourceGroup -Name azdcwapp02 -Verbose
+Start-AzVm -ResourceGroupName dns_RG -Name azdnswapp01 -Verbose 
+Start-AzVm -ResourceGroupName dns_RG -Name azdnswapp02 -Verbose 
+Start-AzVm -ResourceGroupName UTArlingtonHubIdentityResourceGroup -Name azidmlapp01 -Verbose
+Start-AzVm -ResourceGroupName UTArlingtonHubIdentityResourceGroup -Name azdcwapp02 -Verbose 
+Start-AzVm -ResourceGroupName UTArlingtonHubIdentityResourceGroup -Name azidmlapp03 -Verbose
+Start-AzVm -ResourceGroupName UTArlingtonHubIdentityResourceGroup -Name azidmwapp01 -Verbose
+Start-AzVm -ResourceGroupName UTArlingtonHubIdentityResourceGroup -Name azidmwapp02 -Verbose
+
+
+##### Connects PS session to subscription name 340604-313268-Security Operations
+Set-AzContext -subscription "d50eb77e-883d-4239-aa8a-a534060962e6"
+
+# Stop and deallocate the VM before changing the storage type
+Stop-AzVM -ResourceGroupName ParseDmarc_RG -Name az5061lappp1 -Force -Verbose
+
+# Import the CSV into a variable
+$AZdisks = Import-Csv -Path 'C:\Premium SSD to Standard SSD\340604-313268-Security Operations.csv'
+            
+foreach ($AZdisk in $AZdisks)            
+{   
+    # Imports the data from the CSV in each row into a variable         
+    $diskname = $AZdisk.Name
+    $resourcegroup = $AZdisk.RG
+    $storageType = 'StandardSSD_LRS'
+    
+    # Gather disk info
+    $disk = Get-AzDisk -DiskName $diskname -ResourceGroupName $resourcegroup
+           
+    # Update the storage type
+    $disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
+    $disk | Update-AzDisk
+    Write-Output "The disk '$diskname' has been converted successfully." `n
+}
+
+Start-AzVM -ResourceGroupName ParseDmarc_RG -Name az5061lappp1 -Verbose
+
+
+##### Connects PS session to subscription name 340604-313269-OIT Research Services
+Set-AzContext -subscription "5f04c338-5464-4363-82e3-279551c44fcd"
+
+# Stop and deallocate the VM before changing the storage type
+Stop-AzVM -ResourceGroupName researchworkstation_RG -Name az7265lappp1 -Force -Verbose
+Stop-AzVM -ResourceGroupName researchworkstation_RG -Name az7265lappp2 -Force -Verbose
+Stop-AzVM -ResourceGroupName researchworkstation_RG -Name az7265lappp3 -Force -Verbose
+Stop-AzVM -ResourceGroupName researchworkstation_RG -Name az7265lappp4 -Force -Verbose
+Stop-AzVM -ResourceGroupName reverseproxy_RG -Name az7265lwebp2 -Force -Verbose
+
+# Import the CSV into a variable
+$AZdisks = Import-Csv -Path 'C:\Premium SSD to Standard SSD\340604-313269-OIT Research Services.csv'
+            
+foreach ($AZdisk in $AZdisks)            
+{   
+    # Imports the data from the CSV in each row into a variable         
+    $diskname = $AZdisk.Name
+    $resourcegroup = $AZdisk.RG
+    $storageType = 'StandardSSD_LRS'
+    
+    # Gather disk info
+    $disk = Get-AzDisk -DiskName $diskname -ResourceGroupName $resourcegroup
+           
+    # Update the storage type
+    $disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
+    $disk | Update-AzDisk
+    Write-Output "The disk '$diskname' has been converted successfully." `n
+}
+
+Start-AzVm -ResourceGroupName researchworkstation_RG -Name az7265lappp1 -Verbose
+Start-AzVm -ResourceGroupName researchworkstation_RG -Name az7265lappp2 -Verbose
+Start-AzVm -ResourceGroupName researchworkstation_RG -Name az7265lappp3 -Verbose
+Start-AzVm -ResourceGroupName researchworkstation_RG -Name az7265lappp4 -Verbose
+Start-AzVm -ResourceGroupName reverseproxy_RG -Name az7265lwebp2 -Verbose
+
+
+##### Connects PS session to subscription name 340604-313273-OIT Enterprise Data Services
+Set-AzContext -subscription "981b03a9-d4f3-45a3-b7f2-e06c85288639"
+
+# Stop and deallocate the VM before changing the storage type
+Stop-AzVM -ResourceGroupName ehsmssql_RG -Name az6568wdbp1 -Force -Verbose
+Stop-AzVM -ResourceGroupName mars_development_RG -Name az6D61lappd1 -Force -Verbose
+Stop-AzVM -ResourceGroupName mars_development_RG -Name az6D61lappd2 -Force -Verbose
+Stop-AzVM -ResourceGroupName mars_RG -Name az6D61lappp1 -Force -Verbose
+Stop-AzVM -ResourceGroupName mars_RG -Name az6D61lappp2 -Force -Verbose
+Stop-AzVM -ResourceGroupName mars_RG -Name az6D61lappp3 -Force -Verbose
+Stop-AzVM -ResourceGroupName mars_test_RG -Name az6D61lappt1 -Force -Verbose
+Stop-AzVM -ResourceGroupName mars_test_RG -Name az6D61lappt2 -Force -Verbose
+Stop-AzVM -ResourceGroupName mars_RG -Name az6D61ldbp1 -Force -Verbose
+Stop-AzVM -ResourceGroupName mars_test_RG -Name az6D61ldbt1 -Force -Verbose
+
+# Import the CSV into a variable
+$AZdisks = Import-Csv -Path 'C:\Premium SSD to Standard SSD\340604-313273-OIT Enterprise Data Services.csv'
+            
+foreach ($AZdisk in $AZdisks)            
+{   
+    # Imports the data from the CSV in each row into a variable         
+    $diskname = $AZdisk.Name
+    $resourcegroup = $AZdisk.RG
+    $storageType = 'StandardSSD_LRS'
+    
+    # Gather disk info
+    $disk = Get-AzDisk -DiskName $diskname -ResourceGroupName $resourcegroup
+           
+    # Update the storage type
+    $disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
+    $disk | Update-AzDisk
+    Write-Output "The disk '$diskname' has been converted successfully." `n
+}
+
+Start-AzVm -ResourceGroupName ehsmssql_RG -Name az6568wdbp1 -Verbose
+Start-AzVm -ResourceGroupName mars_development_RG -Name az6D61lappd1 -Verbose 
+Start-AzVm -ResourceGroupName mars_development_RG -Name az6D61lappd2 -Verbose 
+Start-AzVm -ResourceGroupName mars_RG -Name az6D61lappp1 -Verbose 
+Start-AzVm -ResourceGroupName mars_RG -Name az6D61lappp2 -Verbose 
+Start-AzVm -ResourceGroupName mars_RG -Name az6D61lappp3 -Verbose 
+Start-AzVm -ResourceGroupName mars_test_RG -Name az6D61lappt1 -Verbose 
+Start-AzVm -ResourceGroupName mars_test_RG -Name az6D61lappt2 -Verbose 
+Start-AzVm -ResourceGroupName mars_RG -Name az6D61ldbp1 -Verbose 
+Start-AzVm -ResourceGroupName mars_test_RG -Name az6D61ldbt1 -Verbose
+
+
+##### Connects PS session to subscription name 340604-313275-OIT Application Development
+Set-AzContext -subscription "c0e9e099-a39f-4860-94a7-32be365e2999"
+
+# Stop and deallocate the VM before changing the storage type
+Stop-AzVM -ResourceGroupName servicenow_development_RG -Name az7365wappd1 -Force -Verbose
+Stop-AzVM -ResourceGroupName servicenow_RG -Name az7365wappp1 -Force -Verbose
+
+# Import the CSV into a variable
+$AZdisks = Import-Csv -Path 'C:\Premium SSD to Standard SSD\340604-313275-OIT Application Development.csv'
+            
+foreach ($AZdisk in $AZdisks)            
+{   
+    # Imports the data from the CSV in each row into a variable         
+    $diskname = $AZdisk.Name
+    $resourcegroup = $AZdisk.RG
+    $storageType = 'StandardSSD_LRS'
+    
+    # Gather disk info
+    $disk = Get-AzDisk -DiskName $diskname -ResourceGroupName $resourcegroup
+           
+    # Update the storage type
+    $disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
+    $disk | Update-AzDisk
+    Write-Output "The disk '$diskname' has been converted successfully." `n
+}
+
+Start-AzVM -ResourceGroupName servicenow_development_RG -Name az7365wappd1 -Verbose 
+Start-AzVM -ResourceGroupName servicenow_RG -Name az7365wappp1 -Verbose 
+
+
+##### Connects PS session to subscription name 340604-313430-Startup-PRV-Liwei Zhang
+Set-AzContext -subscription "041de4d7-bbbe-43bd-9d12-e7c7b28744e0"
+
+# Stop and deallocate the VM before changing the storage type
+Stop-AzVM -ResourceGroupName tecplot_RG -Name az7465wappp1 -Force -Verbose
+
+# Import the CSV into a variable
+$AZdisks = Import-Csv -Path 'C:\Premium SSD to Standard SSD\340604-313430-Startup-PRV-Liwei Zhang.csv'
+            
+foreach ($AZdisk in $AZdisks)            
+{   
+    # Imports the data from the CSV in each row into a variable         
+    $diskname = $AZdisk.Name
+    $resourcegroup = $AZdisk.RG
+    $storageType = 'StandardSSD_LRS'
+    
+    # Gather disk info
+    $disk = Get-AzDisk -DiskName $diskname -ResourceGroupName $resourcegroup
+           
+    # Update the storage type
+    $disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
+    $disk | Update-AzDisk
+    Write-Output "The disk '$diskname' has been converted successfully." `n
+}
+
+Start-AzVM -ResourceGroupName tecplot_RG -Name az7465wappp1 -Verbose
+
+
+##### Connects PS session to subscription name 340604-313933-System Operations
+Set-AzContext -subscription "5eecc4cf-a5b9-4d0f-a457-dfced8c787fd"
+
+# Stop and deallocate the VM before changing the storage type
+Stop-AzVM -ResourceGroupName parkplace_RG -Name az7061wappp1 -Force -Verbose
+Stop-AzVM -ResourceGroupName wsus_RG -Name az7773wappp1 -Force -Verbose
+
+# Import the CSV into a variable
+$AZdisks = Import-Csv -Path 'C:\Premium SSD to Standard SSD\340604-313933-System Operations.csv'
+            
+foreach ($AZdisk in $AZdisks)            
+{   
+    # Imports the data from the CSV in each row into a variable         
+    $diskname = $AZdisk.Name
+    $resourcegroup = $AZdisk.RG
+    $storageType = 'StandardSSD_LRS'
+    
+    # Gather disk info
+    $disk = Get-AzDisk -DiskName $diskname -ResourceGroupName $resourcegroup
+           
+    # Update the storage type
+    $disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
+    $disk | Update-AzDisk
+    Write-Output "The disk '$diskname' has been converted successfully." `n
+}
+
+Start-AzVM -ResourceGroupName parkplace_RG -Name az7061wappp1 -Verbose 
+Start-AzVM -ResourceGroupName wsus_RG -Name az7773wappp1 -Verbose 
+
+
+##### Connects PS session to subscription name 340604-470067-UTA Health Services
+Set-AzContext -subscription "559bba62-1e98-4d32-acae-8fcccf76df9a"
+
+# Stop and deallocate the VM before changing the storage type
+Stop-AzVM -ResourceGroupName propharm_RG -Name az7072wappp1 -Force -Verbose
+
+# Import the CSV into a variable
+$AZdisks = Import-Csv -Path 'C:\Premium SSD to Standard SSD\340604-470067-UTA Health Services.csv'
+            
+foreach ($AZdisk in $AZdisks)            
+{   
+    # Imports the data from the CSV in each row into a variable         
+    $diskname = $AZdisk.Name
+    $resourcegroup = $AZdisk.RG
+    $storageType = 'StandardSSD_LRS'
+    
+    # Gather disk info
+    $disk = Get-AzDisk -DiskName $diskname -ResourceGroupName $resourcegroup
+           
+    # Update the storage type
+    $disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
+    $disk | Update-AzDisk
+    Write-Output "The disk '$diskname' has been converted successfully." `n
+}
+
+Start-AzVM -ResourceGroupName propharm_RG -Name az7072wappp1 -Verbose
+
+
+##### Connects PS session to subscription name 340604-470175-Mav Express
+Set-AzContext -subscription "329f6ddd-8003-4747-b6da-6970b4afbc23"
+
+# Stop and deallocate the VM before changing the storage type
+Stop-AzVM -ResourceGroupName csgold_RG -Name az6373wappp1 -Force -Verbose
+Stop-AzVM -ResourceGroupName csgold_RG -Name az6373wappp2 -Force -Verbose
+Stop-AzVM -ResourceGroupName csgold_RG -Name az6373wdbp1 -Force -Verbose
+Stop-AzVM -ResourceGroupName csgold_RG -Name az6373wwebp1 -Force -Verbose
+Stop-AzVM -ResourceGroupName mavexpress_RG -Name az6D61wappp1 -Force -Verbose
+
+# Import the CSV into a variable
+$AZdisks = Import-Csv -Path 'C:\Premium SSD to Standard SSD\340604-470175-Mav Express.csv'
+            
+foreach ($AZdisk in $AZdisks)            
+{   
+    # Imports the data from the CSV in each row into a variable         
+    $diskname = $AZdisk.Name
+    $resourcegroup = $AZdisk.RG
+    $storageType = 'StandardSSD_LRS'
+    
+    # Gather disk info
+    $disk = Get-AzDisk -DiskName $diskname -ResourceGroupName $resourcegroup
+           
+    # Update the storage type
+    $disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
+    $disk | Update-AzDisk
+    Write-Output "The disk '$diskname' has been converted successfully." `n
+}
+
+Start-AzVm -ResourceGroupName csgold_RG -Name az6373wappp1 -Verbose 
+Start-AzVm -ResourceGroupName csgold_RG -Name az6373wappp2 -Verbose 
+Start-AzVm -ResourceGroupName csgold_RG -Name az6373wdbp1 -Verbose 
+Start-AzVm -ResourceGroupName csgold_RG -Name az6373wwebp1 -Verbose
+Start-AzVm -ResourceGroupName mavexpress_RG -Name az6D61wappp1 -Verbose
+
+# Stop logging
+Stop-transcript
+
+Name                                     Account                                   SubscriptionName                         Environment                              TenantId
+----                                     -------                                   ----------------                         -----------                              --------
+340604-313265-OIT Network Infrastruct... johnsond3-admin@uta.edu                   340604-313265-OIT Network Infrastructure AzureCloud                               5cdc5b43-d7be-4caa-8173-729e3b0a62d9
+VERBOSE: Performing the operation "Stop" on target "az6B65wappp1".
+
+OperationId : 56746be0-fce3-45f1-997f-97205355bf44
+Status      : Succeeded
+StartTime   : 7/10/2022 5:29:17 AM
+EndTime     : 7/10/2022 5:30:41 AM
+Error       :
+Name        :
+
+
+ResourceGroupName            : keywatcher_rg
+ManagedBy                    : /subscriptions/5e390ec8-67e1-45e2-bbaa-0fa2542faba6/resourceGroups/keywatcher_RG/providers/Microsoft.Compute/virtualMachines/az6B65wappp1
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 3/10/2022 8:18:39 AM
+OsType                       :
+HyperVGeneration             :
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 120
+DiskSizeBytes                : 128849018880
+UniqueId                     : a63de440-6d7f-40a2-b338-c9fb1c092ce1
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/5e390ec8-67e1-45e2-bbaa-0fa2542faba6/resourceGroups/keywatcher_rg/providers/Microsoft.Compute/disks/az6B65wappp1_dataDisk
+Name                         : az6B65wappp1_dataDisk
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[Cost Center, 313265], [Department Code, 340604]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+The disk 'az6B65wappp1_dataDisk' has been converted successfully.
+
+
+ResourceGroupName            : keywatcher_rg
+ManagedBy                    : /subscriptions/5e390ec8-67e1-45e2-bbaa-0fa2542faba6/resourceGroups/keywatcher_RG/providers/Microsoft.Compute/virtualMachines/az6B65wappp1
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 3/10/2022 8:18:39 AM
+OsType                       : Windows
+HyperVGeneration             : V2
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 127
+DiskSizeBytes                : 136367308800
+UniqueId                     : a0bac038-1f04-4633-96e8-21da7bf57119
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/5e390ec8-67e1-45e2-bbaa-0fa2542faba6/resourceGroups/keywatcher_rg/providers/Microsoft.Compute/disks/az6B65wappp1_osDisk
+Name                         : az6B65wappp1_osDisk
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[Cost Center, 313265], [Department Code, 340604]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+The disk 'az6B65wappp1_osDisk' has been converted successfully.
+
+VERBOSE: Performing the operation "Start" on target "az6B65wappp1".
+
+OperationId : 09a07f2d-271b-47e4-a252-dcb5217fb775
+Status      : Succeeded
+StartTime   : 7/10/2022 5:30:48 AM
+EndTime     : 7/10/2022 5:32:02 AM
+Error       :
+Name        :
+
+340604-313267-Network Operations (c4b... johnsond3-admin@uta.edu                   340604-313267-Network Operations         AzureCloud                               5cdc5b43-d7be-4caa-8173-729e3b0a62d9
+VERBOSE: Performing the operation "Stop" on target "az4E65lappp1".
+
+OperationId : 0742553a-03af-444d-aede-8c446aad66d3
+Status      : Succeeded
+StartTime   : 7/10/2022 5:32:07 AM
+EndTime     : 7/10/2022 5:32:17 AM
+Error       :
+Name        :
+
+VERBOSE: Performing the operation "Stop" on target "azdcwapp01".
+
+OperationId : 2f0681a0-9d87-45fc-b6df-232cb613fb0f
+Status      : Succeeded
+StartTime   : 7/10/2022 5:32:17 AM
+EndTime     : 7/10/2022 5:33:04 AM
+Error       :
+Name        :
+
+VERBOSE: Performing the operation "Stop" on target "azdcwapp02".
+
+OperationId : 2c1ff264-7784-4766-ab1c-64f550fe1f88
+Status      : Succeeded
+StartTime   : 7/10/2022 5:33:04 AM
+EndTime     : 7/10/2022 5:33:50 AM
+Error       :
+Name        :
+
+VERBOSE: Performing the operation "Stop" on target "azdnswapp01".
+
+OperationId : ed4b8a91-8559-477a-891b-dff1b6fffe9c
+Status      : Succeeded
+StartTime   : 7/10/2022 5:33:51 AM
+EndTime     : 7/10/2022 5:44:15 AM
+Error       :
+Name        :
+
+VERBOSE: Performing the operation "Stop" on target "azdnswapp02".
+
+OperationId : dbbc2a9a-5871-42be-b2c7-be5c281943db
+Status      : Succeeded
+StartTime   : 7/10/2022 5:44:16 AM
+EndTime     : 7/10/2022 5:45:02 AM
+Error       :
+Name        :
+
+VERBOSE: Performing the operation "Stop" on target "azidmlapp01".
+
+OperationId : 33d3d07b-4ccd-4f63-b9d9-fd19523e9fc1
+Status      : Succeeded
+StartTime   : 7/10/2022 5:45:02 AM
+EndTime     : 7/10/2022 5:47:01 AM
+Error       :
+Name        :
+
+VERBOSE: Performing the operation "Stop" on target "azdcwapp02".
+
+OperationId : e7f52e51-b766-43cc-bfcc-9d4c625b8a30
+Status      : Succeeded
+StartTime   : 7/10/2022 5:47:01 AM
+EndTime     : 7/10/2022 5:47:12 AM
+Error       :
+Name        :
+
+VERBOSE: Performing the operation "Stop" on target "azidmlapp03".
+
+OperationId : d43409d9-8ba1-4879-89f8-84ae9070ea8c
+Status      : Succeeded
+StartTime   : 7/10/2022 5:47:12 AM
+EndTime     : 7/10/2022 5:48:35 AM
+Error       :
+Name        :
+
+VERBOSE: Performing the operation "Stop" on target "azidmwapp01".
+
+OperationId : e62811ba-e685-4145-af7b-bf2a96777a9b
+Status      : Succeeded
+StartTime   : 7/10/2022 5:48:35 AM
+EndTime     : 7/10/2022 5:49:21 AM
+Error       :
+Name        :
+
+VERBOSE: Performing the operation "Stop" on target "azidmwapp02".
+
+OperationId : 81803b8e-04b8-4307-bbc0-3b0865807eb7
+Status      : Succeeded
+StartTime   : 7/10/2022 5:49:22 AM
+EndTime     : 7/10/2022 5:50:44 AM
+Error       :
+Name        :
+
+
+ResourceGroupName            : netperf_rg
+ManagedBy                    : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/NetPerf_RG/providers/Microsoft.Compute/virtualMachines/az4E65lappp1
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 2/9/2022 3:59:39 PM
+OsType                       : Linux
+HyperVGeneration             : V2
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 30
+DiskSizeBytes                : 32213303296
+UniqueId                     : 471c53ad-f821-447c-9adb-291d12c4b38e
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/netperf_rg/providers/Microsoft.Compute/disks/az4E65lappp1_osDisk
+Name                         : az4E65lappp1_osDisk
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[Cost Center, 313267], [Department Code, 340604]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+The disk 'az4E65lappp1_osDisk' has been converted successfully.
+
+
+ResourceGroupName            : utarlingtonhubidentityresourcegroup
+ManagedBy                    : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/UTArlingtonHubIdentityResourceGroup/providers/Microsoft.Compute/virtualMachines/azdcwapp01
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 3/24/2020 5:22:47 PM
+OsType                       : Windows
+HyperVGeneration             : V1
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 127
+DiskSizeBytes                : 136367308800
+UniqueId                     : b4ec10e9-6bd7-4d89-9c0e-0c07e7eaaa0d
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/utarlingtonhubidentityresourcegroup/providers/Microsoft.Compute/disks/azdcwapp01_OsDisk_1_b4ec10e96bd74d899
+                               c0e0c07e7eaaa0d
+Name                         : azdcwapp01_OsDisk_1_b4ec10e96bd74d899c0e0c07e7eaaa0d
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[Cost Center, 313268], [Department Code, 340605]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+The disk 'azdcwapp01_OsDisk_1_b4ec10e96bd74d899c0e0c07e7eaaa0d' has been converted successfully.
+
+
+ResourceGroupName            : utarlingtonhubidentityresourcegroup
+ManagedBy                    : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/UTArlingtonHubIdentityResourceGroup/providers/Microsoft.Compute/virtualMachines/azdcwapp02
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 3/24/2020 5:49:49 PM
+OsType                       : Windows
+HyperVGeneration             : V1
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 127
+DiskSizeBytes                : 136367308800
+UniqueId                     : 3210b687-e2ea-4967-995e-95ea4fa06381
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/utarlingtonhubidentityresourcegroup/providers/Microsoft.Compute/disks/azdcwapp02_OsDisk_1_3210b687e2ea49679
+                               95e95ea4fa06381
+Name                         : azdcwapp02_OsDisk_1_3210b687e2ea4967995e95ea4fa06381
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[Cost Center, 313268], [Department Code, 340605]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+The disk 'azdcwapp02_OsDisk_1_3210b687e2ea4967995e95ea4fa06381' has been converted successfully.
+
+
+ResourceGroupName            : dns_rg
+ManagedBy                    : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/dns_RG/providers/Microsoft.Compute/virtualMachines/azdnswapp01
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 4/12/2021 10:12:36 AM
+OsType                       :
+HyperVGeneration             :
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 128
+DiskSizeBytes                : 137438953472
+UniqueId                     : 76ef57df-e530-4c5d-9e73-145a979afd6d
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/dns_rg/providers/Microsoft.Compute/disks/azdnswapp01_DataDisk_0
+Name                         : azdnswapp01_DataDisk_0
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[Cost Center, 313267], [Department Code, 340605]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+The disk 'azdnswapp01_DataDisk_0' has been converted successfully.
+
+
+ResourceGroupName            : dns_rg
+ManagedBy                    : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/dns_RG/providers/Microsoft.Compute/virtualMachines/azdnswapp01
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 4/12/2021 10:12:46 AM
+OsType                       : Windows
+HyperVGeneration             : V2
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 127
+DiskSizeBytes                : 136367308800
+UniqueId                     : 888c9de1-3a21-4192-a1af-5e966c0108b4
+EncryptionSettingsCollection : Microsoft.Azure.Management.Compute.Models.EncryptionSettingsCollection
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/dns_rg/providers/Microsoft.Compute/disks/azdnswapp01_OsDisk_1_888c9de13a214192a1af5e966c0108b4
+Name                         : azdnswapp01_OsDisk_1_888c9de13a214192a1af5e966c0108b4
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[Cost Center, 313267], [Department Code, 340605]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+The disk 'azdnswapp01_OsDisk_1_888c9de13a214192a1af5e966c0108b4' has been converted successfully.
+
+
+ResourceGroupName            : dns_rg
+ManagedBy                    : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/dns_RG/providers/Microsoft.Compute/virtualMachines/azdnswapp02
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 4/12/2021 10:18:47 AM
+OsType                       :
+HyperVGeneration             :
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 128
+DiskSizeBytes                : 137438953472
+UniqueId                     : 2b6c8276-ca35-4859-9684-6ca877d49d11
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/dns_rg/providers/Microsoft.Compute/disks/azdnswapp02_DataDisk_0
+Name                         : azdnswapp02_DataDisk_0
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[Cost Center, 313267], [Department Code, 340605]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+The disk 'azdnswapp02_DataDisk_0' has been converted successfully.
+
+
+ResourceGroupName            : dns_rg
+ManagedBy                    : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/dns_RG/providers/Microsoft.Compute/virtualMachines/azdnswapp02
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 4/12/2021 10:18:55 AM
+OsType                       : Windows
+HyperVGeneration             : V2
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 127
+DiskSizeBytes                : 136367308800
+UniqueId                     : da55caed-ebec-4ff6-81f9-4b4dda08df54
+EncryptionSettingsCollection : Microsoft.Azure.Management.Compute.Models.EncryptionSettingsCollection
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/dns_rg/providers/Microsoft.Compute/disks/azdnswapp02_OsDisk_1_da55caedebec4ff681f94b4dda08df54
+Name                         : azdnswapp02_OsDisk_1_da55caedebec4ff681f94b4dda08df54
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[Cost Center, 313267], [Department Code, 340605]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+The disk 'azdnswapp02_OsDisk_1_da55caedebec4ff681f94b4dda08df54' has been converted successfully.
+
+
+ResourceGroupName            : utarlingtonhubidentityresourcegroup
+ManagedBy                    : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/UTArlingtonHubIdentityResourceGroup/providers/Microsoft.Compute/virtualMachines/azidmlapp01
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 3/25/2020 4:20:42 PM
+OsType                       :
+HyperVGeneration             :
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 4095
+DiskSizeBytes                : 4396972769280
+UniqueId                     : 4400552f-17e6-44e8-8686-63ae4162f615
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/utarlingtonhubidentityresourcegroup/providers/Microsoft.Compute/disks/azidmlapp01_datadisk1
+Name                         : azidmlapp01_datadisk1
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[Cost Center, 313268], [Department Code, 340605]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+The disk 'azidmlapp01_datadisk1' has been converted successfully.
+
+
+ResourceGroupName            : utarlingtonhubidentityresourcegroup
+ManagedBy                    : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/UTArlingtonHubIdentityResourceGroup/providers/Microsoft.Compute/virtualMachines/azidmlapp01
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 3/25/2020 4:22:25 PM
+OsType                       : Linux
+HyperVGeneration             : V1
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 2048
+DiskSizeBytes                : 2199023255552
+UniqueId                     : e2210b0e-3dc9-4aa9-b82e-94a46264d6be
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/utarlingtonhubidentityresourcegroup/providers/Microsoft.Compute/disks/azidmlapp01_OsDisk_1_1250338526
+Name                         : azidmlapp01_OsDisk_1_1250338526
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[Cost Center, 313268], [Department Code, 340605]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+The disk 'azidmlapp01_OsDisk_1_1250338526' has been converted successfully.
+
+Update-AzDisk : Cannot change account type, fault domain or network spine of disk azidmlapp02_datadisk1 while it is 
+attached to running VM /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/UTArlingtonHubIdentityResource
+Group/providers/Microsoft.Compute/virtualMachines/azidmlapp02.
+ErrorCode: OperationNotAllowed
+ErrorMessage: Cannot change account type, fault domain or network spine of disk azidmlapp02_datadisk1 while it is 
+attached to running VM /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/UTArlingtonHubIdentityResource
+Group/providers/Microsoft.Compute/virtualMachines/azidmlapp02.
+ErrorTarget: 
+StatusCode: 409
+ReasonPhrase: Conflict
+OperationID : 35308cba-02fa-4bab-b8f0-0b5f6ebacfb9
+At line:59 char:13
++     $disk | Update-AzDisk
++             ~~~~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Update-AzDisk], ComputeCloudException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Compute.Automation.UpdateAzureRmDisk
+Update-AzDisk : Cannot change account type, fault domain or network spine of disk azidmlapp02_datadisk1 while it is attached to running VM
+/subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/UTArlingtonHubIdentityResourceGroup/providers/Microsoft.Compute/virtualMachines/azidmlapp02.
+ErrorCode: OperationNotAllowed
+ErrorMessage: Cannot change account type, fault domain or network spine of disk azidmlapp02_datadisk1 while it is attached to running VM
+/subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/UTArlingtonHubIdentityResourceGroup/providers/Microsoft.Compute/virtualMachines/azidmlapp02.
+ErrorTarget:
+StatusCode: 409
+ReasonPhrase: Conflict
+OperationID : 35308cba-02fa-4bab-b8f0-0b5f6ebacfb9
+At line:59 char:13
++     $disk | Update-AzDisk
++             ~~~~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Update-AzDisk], ComputeCloudException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Compute.Automation.UpdateAzureRmDisk
+
+The disk 'azidmlapp02_datadisk1' has been converted successfully.
+
+Update-AzDisk : Cannot change account type, fault domain or network spine of disk azidmlapp02_OsDisk_1_123450449 while 
+it is attached to running VM /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/UTArlingtonHubIdentityRe
+sourceGroup/providers/Microsoft.Compute/virtualMachines/azidmlapp02.
+ErrorCode: OperationNotAllowed
+ErrorMessage: Cannot change account type, fault domain or network spine of disk azidmlapp02_OsDisk_1_123450449 while it 
+is attached to running VM /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/UTArlingtonHubIdentityResou
+rceGroup/providers/Microsoft.Compute/virtualMachines/azidmlapp02.
+ErrorTarget: 
+StatusCode: 409
+ReasonPhrase: Conflict
+OperationID : 8233734e-f449-41f7-ad5f-e93844387023
+At line:59 char:13
++     $disk | Update-AzDisk
++             ~~~~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Update-AzDisk], ComputeCloudException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Compute.Automation.UpdateAzureRmDisk
+Update-AzDisk : Cannot change account type, fault domain or network spine of disk azidmlapp02_OsDisk_1_123450449 while it is attached to running VM
+/subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/UTArlingtonHubIdentityResourceGroup/providers/Microsoft.Compute/virtualMachines/azidmlapp02.
+ErrorCode: OperationNotAllowed
+ErrorMessage: Cannot change account type, fault domain or network spine of disk azidmlapp02_OsDisk_1_123450449 while it is attached to running VM
+/subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/UTArlingtonHubIdentityResourceGroup/providers/Microsoft.Compute/virtualMachines/azidmlapp02.
+ErrorTarget:
+StatusCode: 409
+ReasonPhrase: Conflict
+OperationID : 8233734e-f449-41f7-ad5f-e93844387023
+At line:59 char:13
++     $disk | Update-AzDisk
++             ~~~~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Update-AzDisk], ComputeCloudException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Compute.Automation.UpdateAzureRmDisk
+
+The disk 'azidmlapp02_OsDisk_1_123450449' has been converted successfully.
+
+
+ResourceGroupName            : utarlingtonhubidentityresourcegroup
+ManagedBy                    : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/UTArlingtonHubIdentityResourceGroup/providers/Microsoft.Compute/virtualMachines/azidmlapp03
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 3/24/2020 3:25:26 PM
+OsType                       :
+HyperVGeneration             :
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 4095
+DiskSizeBytes                : 4396972769280
+UniqueId                     : 9f7346db-8259-4079-9703-39047853dce6
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/utarlingtonhubidentityresourcegroup/providers/Microsoft.Compute/disks/azidmlapp03_datadisk1
+Name                         : azidmlapp03_datadisk1
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[Cost Center, 313268], [Department Code, 340605]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+The disk 'azidmlapp03_datadisk1' has been converted successfully.
+
+
+ResourceGroupName            : utarlingtonhubidentityresourcegroup
+ManagedBy                    : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/UTArlingtonHubIdentityResourceGroup/providers/Microsoft.Compute/virtualMachines/azidmlapp03
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 3/24/2020 3:25:35 PM
+OsType                       : Linux
+HyperVGeneration             : V1
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 2048
+DiskSizeBytes                : 2199023255552
+UniqueId                     : 13ebca5b-83db-4307-b027-c8c05fd51217
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/utarlingtonhubidentityresourcegroup/providers/Microsoft.Compute/disks/azidmlapp03_OsDisk_1_1860104633
+Name                         : azidmlapp03_OsDisk_1_1860104633
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[Cost Center, 313268], [Department Code, 340605]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+The disk 'azidmlapp03_OsDisk_1_1860104633' has been converted successfully.
+
+
+ResourceGroupName            : utarlingtonhubidentityresourcegroup
+ManagedBy                    : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/UTArlingtonHubIdentityResourceGroup/providers/Microsoft.Compute/virtualMachines/azidmwapp01
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 4/28/2020 9:34:52 AM
+OsType                       :
+HyperVGeneration             :
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 64
+DiskSizeBytes                : 68719476736
+UniqueId                     : 874dd6b4-03f4-4a04-901d-5b2e35581a4a
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/utarlingtonhubidentityresourcegroup/providers/Microsoft.Compute/disks/azidmwapp01_DataDisk_0
+Name                         : azidmwapp01_DataDisk_0
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[Cost Center, 313268], [Department Code, 340605]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+The disk 'azidmwapp01_DataDisk_0' has been converted successfully.
+
+
+ResourceGroupName            : utarlingtonhubidentityresourcegroup
+ManagedBy                    : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/UTArlingtonHubIdentityResourceGroup/providers/Microsoft.Compute/virtualMachines/azidmwapp02
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 4/28/2020 9:36:45 AM
+OsType                       :
+HyperVGeneration             :
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 64
+DiskSizeBytes                : 68719476736
+UniqueId                     : 36393f82-708a-4554-a707-b7c7a832dde9
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/c4b34148-c5fb-4664-b736-0c1911f1ef3f/resourceGroups/utarlingtonhubidentityresourcegroup/providers/Microsoft.Compute/disks/azidmwapp02_DataDisk_0
+Name                         : azidmwapp02_DataDisk_0
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[Cost Center, 313268], [Department Code, 340605]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+The disk 'azidmwapp02_DataDisk_0' has been converted successfully.
+
+VERBOSE: Performing the operation "Start" on target "az4E65lappp1".
+
+OperationId : e6106dd8-ab3f-46ef-a63f-53f365a3673f
+Status      : Succeeded
+StartTime   : 7/10/2022 5:52:00 AM
+EndTime     : 7/10/2022 5:55:48 AM
+Error       :
+Name        :
+
+VERBOSE: Performing the operation "Start" on target "azdcwapp01".
+**********************
+Windows PowerShell transcript end
+End time: 20220710061900
+**********************

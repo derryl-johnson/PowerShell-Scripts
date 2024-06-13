@@ -1,0 +1,14 @@
+Name,RG
+az6373wappp1_dataDisk,csgold_rg
+az6373wappp1_osDisk,csgold_rg
+az6373wappp2_dataDisk,csgold_rg
+az6373wappp2_osDisk,csgold_rg
+az6373wdbp1_dataDisk,csgold_rg
+az6373wdbp1_datadisk1,csgold_rg
+az6373wdbp1_datadisk2,csgold_rg
+az6373wdbp1_datadisk3,csgold_rg
+az6373wdbp1_osDisk,csgold_rg
+az6373wwebp1_dataDisk,csgold_rg
+az6373wwebp1_osDisk,csgold_rg
+az6D61wappp1_dataDisk,mavexpress_rg
+az6D61wappp1_osDisk,mavexpress_rg

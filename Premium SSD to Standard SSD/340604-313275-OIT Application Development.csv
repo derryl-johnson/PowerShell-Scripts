@@ -1,0 +1,5 @@
+Name,RG
+az7365wappd1_dataDisk,servicenow_development_rg
+az7365wappd1_osDisk,servicenow_development_rg
+az7365wappp1_dataDisk,servicenow_rg
+az7365wappp1_osDisk,servicenow_rg

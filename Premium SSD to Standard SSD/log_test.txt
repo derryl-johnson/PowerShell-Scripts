@@ -1,0 +1,207 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20220708120537
+Username: UTA\johnsond3
+RunAs User: UTA\johnsond3
+Configuration Name: 
+Machine: OIT-131297 (Microsoft Windows NT 10.0.19044.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell_ise.exe C:\Premium SSD to Standard SSD\Premium SSD to Standard SSD v2.ps1
+Process ID: 19408
+PSVersion: 5.1.19041.1682
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.1682
+BuildVersion: 10.0.19041.1682
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+Name                                     Account                                   SubscriptionName                         Environment                              TenantId
+----                                     -------                                   ----------------                         -----------                              --------
+340604-310660-Enterprise Development ... johnsond3-admin@uta.edu                   340604-310660-Enterprise Development ... AzureCloud                               5cdc5b43-d7be-4caa-8173-729e3b0a62d9
+
+OperationId : e74f1e73-9851-4bb7-a0c4-2ca04b95fcb5
+Status      : Succeeded
+StartTime   : 7/8/2022 12:05:39 PM
+EndTime     : 7/8/2022 12:06:26 PM
+Error       :
+Name        :
+
+
+ResourceGroupName            : aceweb_test_RG
+ManagedBy                    : /subscriptions/3a4efad0-4000-4cd7-a775-ab814ec17430/resourceGroups/aceweb_test_RG/providers/Microsoft.Compute/virtualMachines/ace-dedwapt01
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 3/21/2022 10:18:07 AM
+OsType                       : Windows
+HyperVGeneration             : V1
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 120
+DiskSizeBytes                : 128849018880
+UniqueId                     : 83b589f0-b7d0-4f51-a8a1-2b1371b3c834
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/3a4efad0-4000-4cd7-a775-ab814ec17430/resourceGroups/aceweb_test_RG/providers/Microsoft.Compute/disks/ace-dedwapt01-OSdisk-00
+Name                         : ace-dedwapt01-OSdisk-00
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[CreatedBy, Azure Migrate], [Cost Center, 310660], [Department Code, 340604], [Environment, test]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+
+ResourceGroupName            : aceweb_test_RG
+ManagedBy                    : /subscriptions/3a4efad0-4000-4cd7-a775-ab814ec17430/resourceGroups/aceweb_test_RG/providers/Microsoft.Compute/virtualMachines/ace-dedwapt01
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 3/21/2022 10:18:07 AM
+OsType                       :
+HyperVGeneration             :
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 100
+DiskSizeBytes                : 107374182400
+UniqueId                     : bbbb5b29-0dd2-48e8-a9aa-b6014851ff27
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/3a4efad0-4000-4cd7-a775-ab814ec17430/resourceGroups/aceweb_test_RG/providers/Microsoft.Compute/disks/ace-dedwapt01-datadisk-01
+Name                         : ace-dedwapt01-datadisk-01
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[CreatedBy, Azure Migrate], [Cost Center, 310660], [Department Code, 340604], [Environment, test]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+
+OperationId : fa2f0d36-d1ef-4466-90d7-18e0917b747d
+Status      : Succeeded
+StartTime   : 7/8/2022 12:06:33 PM
+EndTime     : 7/8/2022 12:09:18 PM
+Error       :
+Name        :
+
+340604-560007-Ryan CTR for Urban Land... johnsond3-admin@uta.edu                   340604-560007-Ryan CTR for Urban Land... AzureCloud                               5cdc5b43-d7be-4caa-8173-729e3b0a62d9
+
+OperationId : ca4a1a07-8010-428f-8f02-f163f8d9fc10
+Status      : Succeeded
+StartTime   : 7/8/2022 12:09:20 PM
+EndTime     : 7/8/2022 12:10:06 PM
+Error       :
+Name        :
+
+
+ResourceGroupName            : argus_test_RG
+ManagedBy                    : /subscriptions/65e940f4-5640-4142-bfec-f47a953ac9ce/resourceGroups/argus_test_RG/providers/Microsoft.Compute/virtualMachines/argusdapptst
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 2/23/2022 1:43:44 PM
+OsType                       : Windows
+HyperVGeneration             : V1
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 100
+DiskSizeBytes                : 107374182400
+UniqueId                     : 5cc18345-e0c6-4f1b-8ed7-ed0123dbfd9b
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/65e940f4-5640-4142-bfec-f47a953ac9ce/resourceGroups/argus_test_RG/providers/Microsoft.Compute/disks/argusdapptst-OSdisk-00
+Name                         : argusdapptst-OSdisk-00
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[CreatedBy, Azure Migrate], [Cost Center, 560007], [Department Code, 340604], [Environment, test]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+
+ResourceGroupName            : argus_test_RG
+ManagedBy                    : /subscriptions/65e940f4-5640-4142-bfec-f47a953ac9ce/resourceGroups/argus_test_RG/providers/Microsoft.Compute/virtualMachines/argusdapptst
+ManagedByExtended            : {}
+Sku                          : Microsoft.Azure.Management.Compute.Models.DiskSku
+Zones                        :
+TimeCreated                  : 2/23/2022 1:43:44 PM
+OsType                       :
+HyperVGeneration             :
+CreationData                 : Microsoft.Azure.Management.Compute.Models.CreationData
+DiskSizeGB                   : 120
+DiskSizeBytes                : 128849018880
+UniqueId                     : 3bd582ac-c7a5-4d9d-8eac-0fb132b5d898
+EncryptionSettingsCollection :
+ProvisioningState            : Succeeded
+DiskIOPSReadWrite            : 500
+DiskMBpsReadWrite            : 60
+DiskIOPSReadOnly             :
+DiskMBpsReadOnly             :
+DiskState                    : Reserved
+Encryption                   : Microsoft.Azure.Management.Compute.Models.Encryption
+MaxShares                    :
+ShareInfo                    : {}
+Id                           : /subscriptions/65e940f4-5640-4142-bfec-f47a953ac9ce/resourceGroups/argus_test_RG/providers/Microsoft.Compute/disks/argusdapptst-datadisk-01
+Name                         : argusdapptst-datadisk-01
+Type                         : Microsoft.Compute/disks
+Location                     : southcentralus
+ExtendedLocation             :
+Tags                         : {[CreatedBy, Azure Migrate], [Cost Center, 560007], [Department Code, 340604], [Environment, test]}
+NetworkAccessPolicy          : AllowAll
+DiskAccessId                 :
+Tier                         :
+BurstingEnabled              :
+PurchasePlan                 :
+SupportsHibernation          :
+SecurityProfile              :
+
+
+OperationId : 6c17de7c-2a4b-4b85-9e4a-26c7852b9855
+Status      : Succeeded
+StartTime   : 7/8/2022 12:10:13 PM
+EndTime     : 7/8/2022 12:12:21 PM
+Error       :
+Name        :
+
+**********************
+Windows PowerShell transcript end
+End time: 20220708121222
+**********************
