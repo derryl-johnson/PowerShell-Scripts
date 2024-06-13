@@ -1,0 +1,1 @@
+﻿Import-Csv -Path C:\test.csv | Out-GridView

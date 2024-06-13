@@ -1,0 +1,14 @@
+Cost center number
+Department code number
+Cost center name
+Application name
+Operating System
+Disk size
+Environment type
+Server type
+Server size
+VNet range
+Subnet range default
+Subnet range bastion
+Request number
+Self support
