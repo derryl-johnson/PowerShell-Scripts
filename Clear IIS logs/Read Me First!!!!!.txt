@@ -1,0 +1,13 @@
+The following VBScript will check the age of each log file in a folder and will delete any log file older than a specified age. To customize the script for your purposes, simply change the name and path of the folder in line 1 of the script, and change the maximum age to the desired value in days, in line 2.
+
+The script above will scan all subfolders, so it will process logs for ALL sites in and under the folder specified. If you want to limit the process to just a single site, change the path appropriately.
+
+To run the script manually, execute the following script in an administrator command line: 
+
+cscript.exe c:\scripts\retentionscript.vbs
+
+Using a script to delete log files is a long-term, reliable solution to the problem of log files consuming disk space. If you automate the process, as shown below, it doesn't require constant maintenance.
+
+Source: 
+https://docs.microsoft.com/en-us/iis/manage/provisioning-and-managing-iis/managing-iis-log-file-storage#02
+
