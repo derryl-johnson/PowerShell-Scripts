@@ -1,0 +1,1 @@
+These scripts were written to create a list of folder permissions and export the list to a file. One script will connect to a folder, gather its ACL, and export it to a TXT file. The other script will start at the parent folder, find each child folder, gather specific ACL properties for each folder, and export the data to a CSV file. 
