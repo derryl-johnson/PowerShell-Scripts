@@ -1,0 +1,1 @@
+This script was written to add multiple users to an Active Directory group. When the script runs, it will import the list of usernames in the CSV file within the directory and use the Add-ADGroupMember command to add the users. To remove multiple users, I commented the line that would add users and uncommented the line that would remove users. 
